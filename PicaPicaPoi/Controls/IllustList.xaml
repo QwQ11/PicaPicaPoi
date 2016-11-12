@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="PicaPicaPoi.Controls.IllustList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PicaPicaPoi.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="478" d:DesignWidth="330">
+    <Grid>
+        <ScrollViewer x:Name="sView" ScrollChanged="sView_ScrollChanged">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="154*"/>
+                    <ColumnDefinition Width="154*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="content1"/>
+                <StackPanel x:Name="content2" Grid.Column="1"/>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
