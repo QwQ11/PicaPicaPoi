@@ -68,9 +68,8 @@ namespace PicaPicaPoi.Controls
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (IsClicked) return;
             ThicknessAnimation ta = new ThicknessAnimation();
-            ta.To = new Thickness(10);
+            ta.To = new Thickness(9);
             ta.Duration = new Duration(TimeSpan.FromSeconds(.1));
             ta.AccelerationRatio = 1;
             vBox.BeginAnimation(Grid.MarginProperty, ta);

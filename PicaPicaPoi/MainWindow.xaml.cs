@@ -73,6 +73,8 @@ namespace PicaPicaPoi
                         passwordInput.Password = reader.ReadElementContentAsString();
                     }
                 }
+                reader.Close();
+                reader.Dispose();
                 Button_Click(null, null);
             } catch { }
         }
@@ -119,6 +121,8 @@ namespace PicaPicaPoi
             writer.WriteElementString("Password", passwordInput.Password);
             writer.WriteEndElement();
             writer.Flush();
+            writer.Close();
+            writer.Dispose();
         }
     }
 }
