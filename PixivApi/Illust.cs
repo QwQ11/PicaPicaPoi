@@ -9,12 +9,14 @@ namespace PixivApi
     public class Illust
     {
         public Illust() { }
-        public Illust(string id,string imageUrl)
+        public Illust(string id, string imageUrl)
         {
             this.Id = id;
             this.ImageUrl = imageUrl;
         }
         public string Id { get; set; }
         public string ImageUrl { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
     }
 }

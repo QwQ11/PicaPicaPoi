@@ -159,6 +159,12 @@ namespace PixivApi
                     case "id":
                         illust.Id = reader.ReadAsString();
                         break;
+                    case "title":
+                        illust.Title = reader.ReadAsString();
+                        break;
+                    case "caption":
+                        illust.Description = reader.ReadAsString();
+                        break;
                     case "image_urls.square_medium":
                         illust.ImageUrl = reader.ReadAsString();
                         illust.ImageUrl.Replace(@"\/", "/");

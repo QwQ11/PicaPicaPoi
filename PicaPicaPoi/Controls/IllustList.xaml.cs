@@ -29,9 +29,9 @@ namespace PicaPicaPoi.Controls
         {
             InitializeComponent();
         }
-        public void Add(string illustId, string imageUrl)
+        public void Add(string illustId, string imageUrl, string title, string desc)
         {
-            RecommendItem item = new RecommendItem(illustId, imageUrl);
+            RecommendItem item = new RecommendItem(illustId, imageUrl, title, desc);
             item.Height = 150;
             item.Width = 150;
             t.Add(item);
@@ -44,7 +44,7 @@ namespace PicaPicaPoi.Controls
         }
         public void Add(Illust illust)
         {
-            this.Add(illust.Id, illust.ImageUrl);
+            this.Add(illust.Id, illust.ImageUrl, illust.Title, illust.Description);
         }
         
         private bool IsVerticalScrollBarAtButtom

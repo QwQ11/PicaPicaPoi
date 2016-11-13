@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Threading;
 using System.Net;
 using System.IO;
+using System.Windows.Media.Animation;
 
 namespace PicaPicaPoi.Controls
 {
@@ -24,6 +25,28 @@ namespace PicaPicaPoi.Controls
     public partial class RecommendItem : UserControl
     {
         string IllustId { get; set; }
+        string Title
+        {
+            get
+            {
+                return title.Text;
+            }
+            set
+            {
+                title.Text = value;
+            }
+        }
+        string Description
+        {
+            get
+            {
+                return description.Text;
+            }
+            set
+            {
+                description.Text = value;
+            }
+        }
         ImageSource Source
         {
             get
@@ -35,10 +58,12 @@ namespace PicaPicaPoi.Controls
                 image.Source = value;
             }
         }
-        public RecommendItem(string illustId, string imageUrl)
+        public RecommendItem(string illustId, string imageUrl, string title, string desc)
         {
             InitializeComponent();
             IllustId = illustId;
+            Title = title;
+            Description = desc;
             
             var wc = new WebClient();
             wc.Headers.Add(HttpRequestHeader.Referer, "http://spapi.pixiv.net/");
@@ -60,6 +85,27 @@ namespace PicaPicaPoi.Controls
                 await ApiManager.Api.LikeIllustAsync(IllustId);
             else
                 await ApiManager.Api.UnlikeIllustAsync(IllustId);
+        }
+
+        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            DoubleAnimation da = new DoubleAnimation();
+            da.To = 1;
+            da.Duration = new Duration(TimeSpan.FromSeconds(.2));
+            mash.BeginAnimation(Grid.OpacityProperty, da);
+        }
+
+        private void UserControl_MouseLeave(object sender, MouseEventArgs e)
+        {
+            DoubleAnimation da = new DoubleAnimation();
+            da.To = 0;
+            da.Duration = new Duration(TimeSpan.FromSeconds(.2));
+            mash.BeginAnimation(Grid.OpacityProperty, da);
+        }
+
+        private void mash_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"http://www.pixiv.net/member_illust.php?mode=medium&illust_id=" + IllustId);
         }
     }
 }

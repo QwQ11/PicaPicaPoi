@@ -5,9 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PicaPicaPoi.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="150" BorderBrush="Gray">
+             d:DesignHeight="150" d:DesignWidth="150" BorderBrush="Gray" MouseEnter="UserControl_MouseEnter" MouseLeave="UserControl_MouseLeave">
     <Grid>
         <Image x:Name="image"/>
+        <Grid x:Name="mash" Opacity="0" MouseUp="mash_MouseUp" Cursor="Hand">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Grid.Background>
+            <TextBlock x:Name="title" Margin="0,36,0,80" Foreground="White" TextAlignment="Center" FontSize="18"></TextBlock>
+            <TextBlock x:Name="description" Margin="0,70,0,10" Foreground="White" TextAlignment="Center"/>
+        </Grid>
         <local:LikeButton x:Name="like" Margin="115,115,0,0" OnClick="like_OnClick"/>
     </Grid>
 </UserControl>
